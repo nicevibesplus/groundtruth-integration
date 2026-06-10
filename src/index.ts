@@ -26,8 +26,9 @@ async function runDatabaseMigrations() {
 }
 
 async function runSynchronizationSweep() {
-    logger.info(`Running Job at ${getTimestamp()}`);
+    logger.info(`\nRunning Synchronizations at ${getTimestamp()}`);
     for (const provider of providerRegistry) {
+        logger.info(`\nSynchronizing provider ${provider.name}...`);
         try {
             await provider.sync(db);
         } catch (err) {
@@ -43,7 +44,7 @@ async function main() {
     logger.debug('[Provision] Running provider setup sweeps...');
     for (const provider of providerRegistry) {
         try {
-            logger.info(`Provisioning provider ${provider.name}...`);
+            logger.info(`\nProvisioning provider ${provider.name}...`);
             await provider.provision(db);
         } catch (err) {
             logger.error(`Critical setup failure for provider ${provider.name}:`, err);

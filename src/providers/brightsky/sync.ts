@@ -6,7 +6,6 @@ import { osemService } from '../../services/osem';
 const PROVIDER_NAME = 'brightsky';
 
 export async function syncBrightsky(db: any) {
-    
     const activeMappings = await db.select()
         .from(weatherOsemMapping)
         .where(eq(weatherOsemMapping.provider, PROVIDER_NAME));
@@ -19,22 +18,36 @@ export async function syncBrightsky(db: any) {
         return acc;
     }, {});
 
-    const totalStations = Object.keys(stationsMap).length;
-    logger.info(`Loading measurement from ${PROVIDER_NAME}`);
+    const totalStations = Object.keys(stationsMap).length; // found
+    logger.debug(`Loading measurements from ${PROVIDER_NAME}`);
 
     let processedStationsCount = 0;
+    let successfulStationsCount = 0; // synced
+    let failedStationsCount = 0;      // failed
     let totalMeasurementsAdded = 0;
 
     for (const [stationId, mappings] of Object.entries(stationsMap) as [string, any[]][]) {
+        processedStationsCount++;
+
+        // Fortschrittsanzeige: Ein Punkt alle 50 Stationen
+        if (processedStationsCount % 50 === 0) {
+            process.stdout.write('.');
+        }
+
         try {
             const response = await fetch(`https://api.brightsky.dev/current_weather?dwd_station_id=${stationId}`);
             if (!response.ok) {
-                logger.error(`[Station ${stationId}] API returned status ${response.status}`);
+                logger.debug(`[Station ${stationId}] API returned status ${response.status}. Skipping.`);
+                failedStationsCount++;
                 continue;
             }
 
             const data = await response.json();
-            if (!data.weather) continue;
+            if (!data.weather) {
+                logger.debug(`[Station ${stationId}] Missing weather data in API response. Skipping.`);
+                failedStationsCount++;
+                continue;
+            }
 
             const weather = data.weather;
             const timestamp = new Date(weather.timestamp).toISOString();
@@ -59,20 +72,36 @@ export async function syncBrightsky(db: any) {
                 }
             }
 
+            let stationHasUploads = false;
             for (const [boxId, payloads] of Object.entries(boxUploads)) {
                 if (payloads.length === 0) continue;
                 
                 await osemService.uploadMeasurements(boxId, boxTokens[boxId], payloads);
                 totalMeasurementsAdded += payloads.length;
+                stationHasUploads = true;
+            }
+
+            if (stationHasUploads) {
+                successfulStationsCount++;
+            } else {
+                // Keine validen Werte für die Sensoren in dieser Station gefunden
+                logger.debug(`[Station ${stationId}] No active phenomena values found to upload.`);
+                failedStationsCount++;
             }
 
         } catch (error) {
             logger.error(`[Station ${stationId}] Error during sync:`, error);
-        }
-
-        processedStationsCount++;
-        if (processedStationsCount % 100 === 0 || processedStationsCount === totalStations) {
-            logger.info(`${processedStationsCount}/${totalStations} stations loaded, ${totalMeasurementsAdded} measurements added`);
+            failedStationsCount++;
         }
     }
+
+    // Zeilenumbruch nach den Punkten, falls welche gedruckt wurden
+    if (processedStationsCount >= 50) {
+        process.stdout.write('\n');
+    }
+
+    // Finale, detaillierte Auswertung
+    logger.info(
+        `(found stations: ${totalStations}, synced: ${successfulStationsCount}, failed: ${failedStationsCount}, measurements added: ${totalMeasurementsAdded})`
+    );
 }
