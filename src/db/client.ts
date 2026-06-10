@@ -1,6 +1,6 @@
-import { drizzle } from 'drizzle-orm/node-postgres';
-import { migrate } from 'drizzle-orm/node-postgres/migrator';
-import { Pool } from 'pg';
+import { drizzle } from 'drizzle-orm/postgres-js';
+import { migrate } from 'drizzle-orm/postgres-js/migrator';
+import postgres from 'postgres';
 import path from 'path';
 import * as schema from './schema';
 
@@ -11,35 +11,36 @@ if (!databaseUrl) {
   throw new Error('DATABASE_URL environment variable is missing.');
 }
 
-// 2. Initialize the Postgres connection pool
-const pool = new Pool({
-  connectionString: databaseUrl,
-  // Automatically close idle connections to keep Postgres happy
-  idleTimeoutMillis: 30000, 
-  connectionTimeoutMillis: 2000,
+// 2. Initialize the Postgres.js client for querying
+const queryClient = postgres(databaseUrl!, {
+  idle_timeout: 30, 
+  connect_timeout: 2,
 });
 
-// 3. Export the queryable Drizzle instance (typed with your schema)
-export const db = drizzle(pool, { schema });
+// 3. Export the queryable Drizzle instance
+export const db = drizzle(queryClient, { schema });
 
 /**
  * Runs pending Drizzle migrations against the database on container boot.
- * This ensures your custom tables are created automatically before the script runs.
  */
 export async function runMigrations(): Promise<void> {
   console.log('🔄 Checking database for pending migrations...');
   
   try {
-    // Resolve the path to the auto-generated migration folder
+    // Postgres.js requires a dedicated connection with max: 1 for migrations
+    const migrationClient = postgres(databaseUrl!, { max: 1 });
+    const migrationDb = drizzle(migrationClient);
+
     const migrationsFolder = path.resolve(__dirname, '../../drizzle/migrations');
     
-    // This looks at your migrations folder and applies any unrun SQL files
-    await migrate(db, { migrationsFolder });
+    await migrate(migrationDb, { migrationsFolder });
     
     console.log('✅ Database migrations applied successfully!');
+    
+    // Close the migration client when done
+    await migrationClient.end();
   } catch (error) {
     console.error('❌ Failed to apply database migrations:', error);
-    // Crash the container intentionally so Docker/Kubernetes knows something is wrong
     process.exit(1); 
   }
 }

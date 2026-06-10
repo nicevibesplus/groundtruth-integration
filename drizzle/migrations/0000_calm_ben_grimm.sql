@@ -1,4 +1,4 @@
-CREATE TABLE "weather_osem_match" (
+CREATE TABLE IF NOT EXISTS "weather_osem_match" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"provider" varchar(50) NOT NULL,
 	"external_station_id" varchar(50) NOT NULL,
@@ -9,4 +9,4 @@ CREATE TABLE "weather_osem_match" (
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX "provider_station_phenomenon_idx" ON "weather_osem_match" USING btree ("provider","external_station_id","phenomenon");
+CREATE UNIQUE INDEX IF NOT EXISTS "provider_station_phenomenon_idx" ON "weather_osem_match" USING btree ("provider","external_station_id","phenomenon");

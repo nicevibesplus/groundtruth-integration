@@ -1,0 +1,5 @@
+services:
+  groundtruth-integration:
+    build: .
+    env_file: .env
+    restart: unless-stopped

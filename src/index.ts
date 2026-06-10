@@ -17,14 +17,6 @@ function getTimestamp(): string {
     return new Date().toTimeString().split(' ')[0];
 }
 
-async function runDatabaseMigrations() {
-    logger.debug('[DB] Running migrations...');
-    const migrationsFolder = path.resolve(__dirname, '../drizzle/migrations');
-    const migrationClient = postgres(databaseUrl!, { max: 1 });
-    await migrate(drizzle(migrationClient), { migrationsFolder });
-    await migrationClient.end();
-}
-
 async function runSynchronizationSweep() {
     logger.info(`\nRunning Synchronizations at ${getTimestamp()}`);
     for (const provider of providerRegistry) {
@@ -39,7 +31,6 @@ async function runSynchronizationSweep() {
 
 async function main() {
     logger.debug('Starting Ground-Truth Integration Engine...');
-    await runDatabaseMigrations();
 
     logger.debug('[Provision] Running provider setup sweeps...');
     for (const provider of providerRegistry) {
@@ -51,7 +42,7 @@ async function main() {
         }
     }
 
-    cron.schedule('5,35 * * * *', async () => {
+    cron.schedule('10,40 * * * *', async () => {
         await runSynchronizationSweep();
     });
 }
