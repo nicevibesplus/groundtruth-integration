@@ -1,0 +1,247 @@
+[
+  {
+    "key": "temperature",
+    "title": "Air Temperature",
+    "short_title": "temp_instant",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "dew_point",
+    "title": "Dew Point Temperature",
+    "short_title": "dew_point_instant",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "pressure_msl",
+    "title": "Air Pressure at Sea Level",
+    "short_title": "pressure_msl_instant",
+    "unit": "hectopascal",
+    "short_unit": "hPa"
+  },
+  {
+    "key": "relative_humidity",
+    "title": "Relative Humidity",
+    "short_title": "humidity_instant",
+    "unit": "percent",
+    "short_unit": "%"
+  },
+  {
+    "key": "cloud_cover",
+    "title": "Total Cloud Cover",
+    "short_title": "cloud_cover_total_instant",
+    "unit": "percent",
+    "short_unit": "%"
+  },
+  {
+    "key": "visibility",
+    "title": "Visibility",
+    "short_title": "visibility_instant",
+    "unit": "metres",
+    "short_unit": "m"
+  },
+  {
+    "key": "precipitation",
+    "title": "Precipitation Amount (Hourly)",
+    "short_title": "precip_sum_1h",
+    "unit": "millimetres",
+    "short_unit": "mm"
+  },
+  {
+    "key": "precipitation_10",
+    "title": "Precipitation Amount (10 min)",
+    "short_title": "precip_sum_10m",
+    "unit": "millimetres",
+    "short_unit": "mm"
+  },
+  {
+    "key": "precipitation_30",
+    "title": "Precipitation Amount (30 min)",
+    "short_title": "precip_sum_30m",
+    "unit": "millimetres",
+    "short_unit": "mm"
+  },
+  {
+    "key": "precipitation_60",
+    "title": "Precipitation Amount (60 min)",
+    "short_title": "precip_sum_60m",
+    "unit": "millimetres",
+    "short_unit": "mm"
+  },
+  {
+    "key": "wind_speed",
+    "title": "Wind Speed (Hourly)",
+    "short_title": "wind_speed_avg_1h",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_speed_10",
+    "title": "Wind Speed (10 min)",
+    "short_title": "wind_speed_avg_10m",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_speed_30",
+    "title": "Wind Speed (30 min)",
+    "short_title": "wind_speed_avg_30m",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_speed_60",
+    "title": "Wind Speed (60 min)",
+    "short_title": "wind_speed_avg_60m",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_direction",
+    "title": "Wind Direction (Hourly)",
+    "short_title": "wind_dir_avg_1h",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "wind_direction_10",
+    "title": "Wind Direction (10 min)",
+    "short_title": "wind_dir_avg_10m",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "wind_direction_30",
+    "title": "Wind Direction (30 min)",
+    "short_title": "wind_dir_avg_30m",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "wind_direction_60",
+    "title": "Wind Direction (60 min)",
+    "short_title": "wind_dir_avg_60m",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "wind_gust_speed",
+    "title": "Wind Gust Speed (Hourly)",
+    "short_title": "wind_gust_max_1h",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_gust_speed_10",
+    "title": "Wind Gust Speed (10 min)",
+    "short_title": "wind_gust_max_10m",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_gust_speed_30",
+    "title": "Wind Gust Speed (30 min)",
+    "short_title": "wind_gust_max_30m",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_gust_speed_60",
+    "title": "Wind Gust Speed (60 min)",
+    "short_title": "wind_gust_max_60m",
+    "unit": "metres per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "wind_gust_direction",
+    "title": "Wind Gust Direction (Hourly)",
+    "short_title": "wind_gust_dir_max_1h",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "wind_gust_direction_10",
+    "title": "Wind Gust Direction (10 min)",
+    "short_title": "wind_gust_dir_max_10m",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "wind_gust_direction_30",
+    "title": "Wind Gust Direction (30 min)",
+    "short_title": "wind_gust_dir_max_30m",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "wind_gust_direction_60",
+    "title": "Wind Gust Direction (60 min)",
+    "short_title": "wind_gust_dir_max_60m",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "solar",
+    "title": "Solar Irradiance (Hourly)",
+    "short_title": "solar_irradiance_sum_1h",
+    "unit": "kilowatt hours per square metre",
+    "short_unit": "kWh/m²"
+  },
+  {
+    "key": "solar_10",
+    "title": "Solar Irradiance (10 min)",
+    "short_title": "solar_irradiance_sum_10m",
+    "unit": "kilowatt hours per square metre",
+    "short_unit": "kWh/m²"
+  },
+  {
+    "key": "solar_30",
+    "title": "Solar Irradiance (30 min)",
+    "short_title": "solar_irradiance_sum_30m",
+    "unit": "kilowatt hours per square metre",
+    "short_unit": "kWh/m²"
+  },
+  {
+    "key": "solar_60",
+    "title": "Solar Irradiance (60 min)",
+    "short_title": "solar_irradiance_sum_60m",
+    "unit": "kilowatt hours per square metre",
+    "short_unit": "kWh/m²"
+  },
+  {
+    "key": "sunshine",
+    "title": "Sunshine Duration (Hourly)",
+    "short_title": "sunshine_duration_sum_1h",
+    "unit": "seconds",
+    "short_unit": "s"
+  },
+  {
+    "key": "sunshine_10",
+    "title": "Sunshine Duration (10 min)",
+    "short_title": "sunshine_duration_sum_10m",
+    "unit": "seconds",
+    "short_unit": "s"
+  },
+  {
+    "key": "sunshine_30",
+    "title": "Sunshine Duration (30 min)",
+    "short_title": "sunshine_duration_sum_30m",
+    "unit": "seconds",
+    "short_unit": "s"
+  },
+  {
+    "key": "sunshine_60",
+    "title": "Sunshine Duration (60 min)",
+    "short_title": "sunshine_duration_sum_60m",
+    "unit": "seconds",
+    "short_unit": "s"
+  },
+  {
+    "key": "soil_temperature",
+    "title": "Soil Temperature (5cm depth)",
+    "short_title": "soil_temp_instant",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  }
+]

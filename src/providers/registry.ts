@@ -1,25 +1,8 @@
-import { provisionBrightsky } from './brightsky/provision';
-import { syncBrightsky } from './brightsky/sync';
+import { BrightskyProvider } from './brightsky/brightsky';
+import { SmhiProvider } from './smhi/smhi';
 
-// Define a strict schema for your Weather Providers
-export interface WeatherProvider {
-    name: string;
-    provision: (db: any) => Promise<void>;
-    sync: (db: any) => Promise<void>;
-}
-
-// Global registry lookup array
-export const providerRegistry: WeatherProvider[] = [
-    {
-        name: 'brightsky',
-        provision: provisionBrightsky,
-        sync: syncBrightsky,
-    },
-    /*
-    {
-        name: 'openweather',
-        provision: provisionOpenWeather,
-        sync: syncOpenWeather,
-    }
-    */
+export const providerRegistry = [
+    new BrightskyProvider(),
+    new SmhiProvider()
+    // new OpenWeatherProvider(),
 ];

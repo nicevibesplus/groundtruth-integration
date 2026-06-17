@@ -1,0 +1,289 @@
+[
+  {
+    "key": "1",
+    "title": "Air temperature (instantaneous value, 1 time/hour)",
+    "short_title": "temp_instant_1h",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "2",
+    "title": "Air temperature (daily mean value, 1 time/day at 00:00)",
+    "short_title": "temp_avg_24h",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "3",
+    "title": "Wind direction (10-minute mean value, 1 time/hour)",
+    "short_title": "wind_dir_avg_10m_1h",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "4",
+    "title": "Wind speed (10-minute mean value, 1 time/hour)",
+    "short_title": "wind_speed_avg_10m_1h",
+    "unit": "meters per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "5",
+    "title": "Precipitation amount (1-day sum, 1 time/day at 06:00)",
+    "short_title": "precip_sum_24h",
+    "unit": "millimeters",
+    "short_unit": "mm"
+  },
+  {
+    "key": "6",
+    "title": "Relative air humidity (instantaneous value, 1 time/hour)",
+    "short_title": "humidity_instant_1h",
+    "unit": "percent",
+    "short_unit": "%"
+  },
+  {
+    "key": "7",
+    "title": "Precipitation amount (1-hour sum, 1 time/hour)",
+    "short_title": "precip_sum_1h",
+    "unit": "millimeters",
+    "short_unit": "mm"
+  },
+  {
+    "key": "8",
+    "title": "Snow depth (instantaneous value, 1 time/day at 06:00)",
+    "short_title": "snow_depth_instant_24h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "9",
+    "title": "Air pressure reduced to sea level (instantaneous value, 1 time/hour)",
+    "short_title": "pressure_msl_instant_1h",
+    "unit": "hectopascals",
+    "short_unit": "hPa"
+  },
+  {
+    "key": "10",
+    "title": "Sunshine duration (1-hour sum, 1 time/hour)",
+    "short_title": "sunshine_duration_sum_1h",
+    "unit": "seconds",
+    "short_unit": "s"
+  },
+  {
+    "key": "11",
+    "title": "Global irradiance (Swedish stations, 1-hour mean value, every hour)",
+    "short_title": "global_irradiance_avg_1h",
+    "unit": "watts per square meter",
+    "short_unit": "W/m²"
+  },
+  {
+    "key": "12",
+    "title": "Visibility (instantaneous value, 1 time/hour)",
+    "short_title": "visibility_instant_1h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "14",
+    "title": "Precipitation amount (15-minute sum, 4 times/hour)",
+    "short_title": "precip_sum_15m",
+    "unit": "millimeters",
+    "short_unit": "mm"
+  },
+  {
+    "key": "15",
+    "title": "Precipitation intensity (max during 15 minutes, 4 times/hour)",
+    "short_title": "precip_intensity_max_15m",
+    "unit": "millimeters per second",
+    "short_unit": "mm/s"
+  },
+  {
+    "key": "16",
+    "title": "Total cloud cover (instantaneous value, 1 time/hour)",
+    "short_title": "cloud_cover_total_instant_1h",
+    "unit": "percent",
+    "short_unit": "%"
+  },
+  {
+    "key": "19",
+    "title": "Air temperature (minimum, 1 time per day)",
+    "short_title": "temp_min_24h",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "20",
+    "title": "Air temperature (maximum, 1 time per day)",
+    "short_title": "temp_max_24h",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "21",
+    "title": "Wind gust (maximum, 1 time/hour)",
+    "short_title": "wind_gust_max_1h",
+    "unit": "meters per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "22",
+    "title": "Air temperature (mean, 1 time per month)",
+    "short_title": "temp_avg_1M",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "23",
+    "title": "Precipitation amount (sum, 1 time per month)",
+    "short_title": "precip_sum_1M",
+    "unit": "millimeters",
+    "short_unit": "mm"
+  },
+  {
+    "key": "24",
+    "title": "Longwave irradiance (1-hour mean value, every hour)",
+    "short_title": "longwave_irradiance_avg_1h",
+    "unit": "watts per square meter",
+    "short_unit": "W/m²"
+  },
+  {
+    "key": "25",
+    "title": "Maximum of mean wind speed (maximum of 10-minute mean values over 3 hours, 1 time/hour)",
+    "short_title": "wind_speed_avg_10m_max_3h",
+    "unit": "meters per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "26",
+    "title": "Air temperature (minimum, 2 times per day at 06:00 and 18:00)",
+    "short_title": "temp_min_12h",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "27",
+    "title": "Air temperature (maximum, 2 times per day at 06:00 and 18:00)",
+    "short_title": "temp_max_12h",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "28",
+    "title": "Cloud base (lowest cloud layer, instantaneous value, 1 time/hour)",
+    "short_title": "cloud_base_layer1_instant_1h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "30",
+    "title": "Cloud base (second cloud layer, instantaneous value, 1 time/hour)",
+    "short_title": "cloud_base_layer2_instant_1h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "32",
+    "title": "Cloud base (third cloud layer, instantaneous value, 1 time/hour)",
+    "short_title": "cloud_base_layer3_instant_1h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "34",
+    "title": "Cloud base (fourth cloud layer, instantaneous value, 1 time/hour)",
+    "short_title": "cloud_base_layer4_instant_1h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "36",
+    "title": "Cloud base (lowest cloud base, instantaneous value, 1 time/hour)",
+    "short_title": "cloud_base_synop_instant_1h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "37",
+    "title": "Cloud base (lowest cloud base, minimum during 15 minutes, 1 time/hour)",
+    "short_title": "cloud_base_synop_min_15m_1h",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "38",
+    "title": "Precipitation intensity (maximum of averages over 15 minutes, 4 times/hour)",
+    "short_title": "precip_intensity_avg_15m_max_1h",
+    "unit": "millimeters per second",
+    "short_unit": "mm/s"
+  },
+  {
+    "key": "39",
+    "title": "Dew point temperature (instantaneous value, 1 time/hour)",
+    "short_title": "dew_point_instant_1h",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "43",
+    "title": "Relative air humidity (instantaneous value every minute)",
+    "short_title": "humidity_instant_1m",
+    "unit": "percent",
+    "short_unit": "%"
+  },
+  {
+    "key": "44",
+    "title": "Air pressure reduced to sea level (instantaneous value every minute)",
+    "short_title": "pressure_msl_instant_1m",
+    "unit": "hectopascals",
+    "short_unit": "hPa"
+  },
+  {
+    "key": "45",
+    "title": "Air temperature (instantaneous value every minute)",
+    "short_title": "temp_instant_1m",
+    "unit": "degrees Celsius",
+    "short_unit": "°C"
+  },
+  {
+    "key": "46",
+    "title": "Precipitation amount (precipitation during one minute)",
+    "short_title": "precip_sum_1m",
+    "unit": "millimeters",
+    "short_unit": "mm"
+  },
+  {
+    "key": "47",
+    "title": "Wind speed (1-minute mean value every minute)",
+    "short_title": "wind_speed_avg_1m",
+    "unit": "meters per second",
+    "short_unit": "m/s"
+  },
+  {
+    "key": "48",
+    "title": "Wind direction (1-minute mean value every minute)",
+    "short_title": "wind_dir_avg_1m",
+    "unit": "degrees",
+    "short_unit": "°"
+  },
+  {
+    "key": "50",
+    "title": "Total cloud cover (instantaneous value every 5 minutes)",
+    "short_title": "cloud_cover_total_instant_5m",
+    "unit": "percent",
+    "short_unit": "%"
+  },
+  {
+    "key": "51",
+    "title": "Visibility (1-minute mean value every minute)",
+    "short_title": "visibility_avg_1m",
+    "unit": "meters",
+    "short_unit": "m"
+  },
+  {
+    "key": "52",
+    "title": "Snow depth (instantaneous value every minute)",
+    "short_title": "snow_depth_instant_1m",
+    "unit": "meters",
+    "short_unit": "m"
+  }
+]

@@ -2,14 +2,16 @@ import 'dotenv/config';
 import cron from 'node-cron';
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { migrate } from 'drizzle-orm/postgres-js/migrator';
-import path from 'path';
 
 import { providerRegistry } from './providers/registry';
 import { logger } from './logger';
+import { osemService } from './services/osem';
 
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) throw new Error('DATABASE_URL is missing.');
+
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
 
 const db = drizzle(postgres(databaseUrl));
 
@@ -28,21 +30,31 @@ async function runSynchronizationSweep() {
         }
     }
 }
+async function runProvisioningSweep() {
+    logger.info(`\n--- Running Provider Provisioning & Schema Update Sweep ---`);
+    await osemService.signin();
+    for (const provider of providerRegistry) {
+        try {
+            await provider.provision(db);
+        } catch (err) {
+            logger.error(`Failed provisioning sweep for ${provider.name}:`, err);
+        }
+    }
+}
 
 async function main() {
     logger.debug('Starting Ground-Truth Integration Engine...');
 
-    logger.debug('[Provision] Running provider setup sweeps...');
-    for (const provider of providerRegistry) {
-        try {
-            logger.info(`\nProvisioning provider ${provider.name}...`);
-            await provider.provision(db);
-        } catch (err) {
-            logger.error(`Critical setup failure for provider ${provider.name}:`, err);
-        }
-    }
+    // Run once at startup to guarantee everything is matched up
+    await runProvisioningSweep();
 
-    cron.schedule('10,40 * * * *', async () => {
+    // Cron 1: Every hour, look for station updates, new sensors, or brand new stations
+    cron.schedule('0 * * * *', async () => {
+        await runProvisioningSweep();
+    });
+
+    // Cron 2: Continuous measurement sync (your existing cron)
+    cron.schedule('0,10,20,30,40,50 * * * *', async () => {
         await runSynchronizationSweep();
     });
 }
