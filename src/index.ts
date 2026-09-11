@@ -54,7 +54,7 @@ async function main() {
     });
 
     // Cron 2: Continuous measurement sync (your existing cron)
-    cron.schedule('0,10,20,30,40,50 * * * *', async () => {
+    cron.schedule('15,45 * * * *', async () => {
         await runSynchronizationSweep();
     });
 }
